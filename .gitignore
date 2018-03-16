@@ -1,0 +1,10 @@
+#IDE
+**/.idea
+
+#OS
+.DS_Store
+.tmp
+
+# Compiled binary and packages
+bin/
+obj/

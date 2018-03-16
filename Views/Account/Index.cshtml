@@ -1,0 +1,82 @@
+﻿@model PaginatedList<ManagementPortal.Models.Account>
+@{
+    ViewData["Title"] = "VCard Account";
+}
+
+<h2>VCard Account</h2>
+<div id="accounts">
+    <p>
+@*        <a asp-action="Create"><button class="btn btn-primary">Create New</button></a>*@
+    </p>
+    <div id="accountsIndexTable">
+        <form asp-action="Index" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    Find by name: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+                    <input type="submit" value="Search" class="btn btn-default" /> |
+                    <a asp-action="Index">Reset</a>
+                </p>
+            </div>
+        </form>
+        <table class="table table-condensed">
+            <thead>
+            <tr>
+                <th>VCard ID</th>
+                <th>Account ID</th>
+                <th>Status</th>
+                <th>Phone Number</th>
+                <th>Email Address</th>
+                <th>Date Created</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vcard_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.account_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.account_status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone_number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email_address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date_created)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.account_id">Details</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

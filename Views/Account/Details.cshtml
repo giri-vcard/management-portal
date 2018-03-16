@@ -1,0 +1,80 @@
+﻿@model ManagementPortal.Models.Account
+
+@{
+    ViewData["Title"] = "VCard Details";
+}
+
+
+<h2>VCard Account Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vcard_id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.vcard_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.phone_country) - @Html.DisplayFor(model => model.phone_number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email_address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email_address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.first_name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.first_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.last_name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.last_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.account_status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.account_status)
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Subscription Status</th>
+                    <th>Subscription Type</th>
+                    <th>Date Paid</th>
+                    <th>Date Renewed</th>
+                </tr>
+                @foreach (var item in Model.account_subscription)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.subscription_status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.subscription_type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date_paid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date_renewed)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

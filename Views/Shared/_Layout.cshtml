@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VCard Management Portal</title>
+    <title>@ViewData["Title"] - Management Portal</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -30,7 +30,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Account" asp-action="Index">Account</a></li>
                 </ul>
             </div>
@@ -40,7 +39,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - VCard Management Portal</p>
+            <p>Copyright &copy; 2018 vCard Pte Ltd. All rights reserved</p>
         </footer>
     </div>
 
